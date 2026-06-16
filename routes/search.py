@@ -1,9 +1,7 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from db import get_db
-from models import Document
 from pydantic import BaseModel
-from services import get_response
+from services import DocumentService
+from dependencies import get_document_service
 
 
 class Query(BaseModel):
@@ -12,8 +10,7 @@ class Query(BaseModel):
 router = APIRouter()
 
 @router.post("/get_answer")
-def get_answer(payload: Query, db: Session = Depends(get_db)):
-    print(payload.question)
-    return get_response(payload.question, db)
+async def get_answer(payload: Query, document_service: DocumentService = Depends(get_document_service)):
+    return await document_service.get_response(payload.question)
 
     

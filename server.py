@@ -1,13 +1,4 @@
 from concurrent.futures import ThreadPoolExecutor
-from datasets import load_dataset
-from openai import OpenAI
-import numpy as np
-import os
-import sys
-import threading
-from dotenv import load_dotenv
-from mcp.server.fastmcp import FastMCP
-import re
 from fastapi import FastAPI
 from routes.fetch import router as fetch_router
 from routes.search import router as search_router

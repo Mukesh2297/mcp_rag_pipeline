@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from models import Document
-from services import process_data, encode_one, already_seeded
+from services import process_data, already_seeded
 
 
 def seed(db: Session):
