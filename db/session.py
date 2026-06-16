@@ -1,17 +1,14 @@
-import os
+from core.config import settings
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import URL
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
-load_dotenv()
-
-
-DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT")
-DB_DATABASE = os.getenv("DB_DATABASE")
-DB_USERNAME = os.getenv("DB_USERNAME")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = settings.DB_HOST
+DB_PORT = settings.DB_PORT
+DB_DATABASE = settings.DB_DATABASE
+DB_USERNAME = settings.DB_USERNAME
+DB_PASSWORD = settings.DB_PASSWORD
 
 database_url = URL.create(
     drivername="postgresql+psycopg2",
